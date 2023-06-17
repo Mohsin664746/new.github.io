@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>University Help Desk</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div class="bg-image"></div>
+  <h1>University Help Desk</h1>
+
+  <form id="complaint_form">
+    <label for="complainant_name">Your Name:</label>
+    <input type="text" id="complainant_name" name="complainant_name" required><br><br>
+
+    <label for="complainant_email">Your Email:</label>
+    <input type="email" id="complainant_email" name="complainant_email" required><br><br>
+
+    <label for="job_title">Job Title:</label>
+    <input type="text" id="job_title" name="job_title" required><br><br>
+
+    <label for="contact_number">Contact Number:</label>
+    <input type="text" id="contact_number" name="contact_number" required><br><br>
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="address" required><br><br>
+
+    <label for="complaint_type">Complaint Type:</label>
+    <input type="text" id="complaint_type" name="complaint_type" required><br><br>
+
+    <label for="offender_name">Offender's Name:</label>
+    <input type="text" id="offender_name" name="offender_name" required><br><br>
+
+    <label for="complaint_description">Complaint Description:</label><br>
+    <textarea id="complaint_description" name="complaint_description" rows="5" cols="30" required></textarea><br><br>
+
+    <input type="submit" value="Submit Complaint">
+  </form>
+
+  <script>
+
+document.getElementById("complaint_form").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent the form from submitting normally
+
+  // Get form values
+  var complainantName = document.getElementById("complainant_name").value;
+  var complainantEmail = document.getElementById("complainant_email").value;
+  var jobTitle = document.getElementById("job_title").value;
+  var contactNumber = document.getElementById("contact_number").value;
+  var address = document.getElementById("address").value
+  var complaintType = document.getElementById("complaint_type").value;
+  var offenderName = document.getElementById("offender_name").value;
+  var complaintDescription = document.getElementById("complaint_description").value;
+
+  // Construct the email subject and body
+  var subject = "University Help Desk Complaint";
+  var body =
+    "Complainant Name: " + complainantName + "\n" +
+    "Complainant Email: " + complainantEmail + "\n" +
+    "Job Title: " + jobTitle + "\n" +
+    "Contact Number: " + contactNumber + "\n" +
+    "Address: " + address + "\n" +
+    "Complaint Type: " + complaintType + "\n" +
+    "Offender's Name: " + offenderName + "\n" +
+    "Complaint Description: " + complaintDescription;
+
+  // Construct the mailto URL
+  var mailtoUrl = "mailto:hunzilanisar123@gmail.com" +
+    "?subject=" + encodeURIComponent(subject) +
+    "&body=" + encodeURIComponent(body);
+
+  // Open the email client
+  window.location.href = mailtoUrl;
+} );
+
+  </script>
+</body>
+</html>
